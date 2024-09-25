@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barra de Progresso Customizada</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        
+        .progress-container {
+            width: 80%;
+            background-color: #ddd;
+            border-radius: 25px;
+            padding: 3px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        
+        .progress-bar {
+            width: 0%;
+            height: 30px;
+            background-color: red; 
+            border-radius: 25px;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            font-weight: bold;
+            transition: width 0.4s ease, background-color 0.4s ease;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar">0%</div>
+    </div>
+
+    <script>
+        
+        function updateProgress(progress) {
+            const progressBar = document.getElementById('progressBar');
+            
+            
+            if (progress > 100) progress = 100;
+            if (progress < 0) progress = 0;
+
+            
+            progressBar.style.width = `${progress}%`;
+            progressBar.textContent = `${progress}%`;
+
+            
+            if (progress < 33) {
+                
+                progressBar.style.backgroundColor = 'red';
+            } else if (progress >= 33 && progress < 66) {
+                
+                progressBar.style.backgroundColor = 'yellow';
+                progressBar.style.color = 'black'; 
+            } else {
+                
+                progressBar.style.backgroundColor = 'green';
+                progressBar.style.color = 'white'; 
+            }
+        }
+
+        // Simulação do progresso, só fazer teste
+        updateProgress(30);
+    </script>
+</body>
+</html>
